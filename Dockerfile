@@ -1,6 +1,7 @@
 FROM ollama/ollama:latest
 
-# 모델을 직접 컨테이너에 설치
-RUN ollama pull qwen2.5:3b
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 EXPOSE 11434
+ENTRYPOINT ["/entrypoint.sh"]
